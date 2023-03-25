@@ -1,14 +1,15 @@
 "use client"
-import {useContext} from 'react';
-import { TaskContext } from '@/context/taskContext';
+import { useTask } from '@/context/taskContext';
 
 const Page = () => {
 
-    const contextData = useContext(TaskContext);
+    const data1 = useTask();
 
     return (
         <div>
-            
+            <ul>
+                {/* {data1.map((n)=>(<li key={Math.random()}>{n}</li>))} */}
+            </ul>
         </div>
     );
 }

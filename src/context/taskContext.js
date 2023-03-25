@@ -1,12 +1,20 @@
 "use client"
-import {createContext} from 'react';
+import {createContext, useContext} from 'react';
 
 export const TaskContext = createContext();
+// custom hook
+export const useTask = ()=>{
+    const data = useContext(TaskContext);
+    if(!data)
+        throw new Error('useTask | TaskContext.Provider is missing.');
+    return data;
+}
+
 //provider
 export const TaskProvider = ({children, ...props}) => {
-    const tasks = [11,2,2,3,1,3];
+    const tasks = [];
     return(
-        <TaskContext.Provider value={tasks}>
+        <TaskContext.Provider value={{tasks}}>
             {children}
         </TaskContext.Provider>
     );
